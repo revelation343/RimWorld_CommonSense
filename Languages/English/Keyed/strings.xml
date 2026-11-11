@@ -46,7 +46,9 @@
 	<pick_proper_amount_note>No more chocolate lying around</pick_proper_amount_note>
 	<Category>Category</Category>
 	<fun_police_label>Pawns are encouraged to fulfill secondary needs during joy assignment, or if woken early</fun_police_label>
-	<fun_police_note>Pawns will try to top off their joy need only after it goes below 80%, they'll prefer to pick up a spare meal to their inventory, and fulfill all their hygiene needs (if dubs mod is present)</fun_police_note>
+	<fun_police_note>During Recreation hours, pawns seek joy only while it is below the threshold set below (vanilla: 95%) and work otherwise; they'll prefer to pick up a spare meal to their inventory, and fulfill all their hygiene needs (if dubs mod is present)</fun_police_note>
+	<fun_police_threshold_label>    Recreation threshold: {0}%</fun_police_threshold_label>
+	<fun_police_threshold_note>During Recreation hours a pawn goes to play when joy is below this and works when it is at or above it. Lower it when few recreation types are available (joy plateaus below the threshold and pawns never work during Recreation); raise it as more types unlock.</fun_police_threshold_note>
 	<numbers_head>Tweakable numbers (0 = Unlimited)</numbers_head>
 	<op_clean_number_label>Filth limit for pre-task cleaning</op_clean_number_label>
 	<adv_clean_number_label>Filth limit for pre-bill cleaning</adv_clean_number_label>

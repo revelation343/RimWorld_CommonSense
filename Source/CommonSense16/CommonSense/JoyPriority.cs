@@ -28,16 +28,14 @@ namespace CommonSense
         {
             return !Settings.optimal_patching_in_use || Settings.fun_police;
         }
+        // Joy level below which a pawn on a Recreation assignment goes looking for joy; at or above it, they work.
+        // Vanilla hardcodes 0.95. Originally this returned 0.95 until the pawn had topped off once, then 0.8; colonies
+        // whose joy income can't reach 95% never topped off, so the drop never happened. Now a flat, user-set threshold.
         private static float JoyPolicePriority(Pawn pawn)
         {
             if (!Settings.fun_police)
-                return 0.8f;
-
-            CompJoyToppedOff c = pawn.TryGetComp<CompJoyToppedOff>();
-            if (c == null || !c.JoyToppedOff)
                 return 0.95f;
-            else
-                return 0.8f;
+            return Settings.fun_police_threshold;
         }
 
         private static float JoyPolicePriority2(Pawn pawn)

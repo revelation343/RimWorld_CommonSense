@@ -25,6 +25,7 @@ namespace CommonSense
         public static bool put_back_to_inv = true;
         public static bool pick_proper_amount = true;
         public static bool fun_police = true;
+        public static float fun_police_threshold = 0.8f;
         public static int op_clean_num = 5;
         public static int adv_clean_num = 5;
         public static int doc_clean_num = 0;
@@ -45,7 +46,7 @@ namespace CommonSense
 
         public static void DoSettingsWindowContents(Rect inRect)
         {
-            int rowCount = 42; //increase that number as new options are added
+            int rowCount = 44; //increase that number as new options are added
             Listing_Standard listing_Standard = new Listing_Standard();
             Rect viewRect = new Rect(0f, 0f, inRect.width, rowCount * 26f);
             viewRect.xMax *= 0.9f;
@@ -69,6 +70,11 @@ namespace CommonSense
             listing_Standard.CheckboxLabeled("drugs_use_potential_mood_label".Translate(), ref drugs_use_potential_mood, "drugs_use_potential_mood_note".Translate());
             listing_Standard.CheckboxLabeled("pick_proper_amount_label".Translate(), ref pick_proper_amount, "pick_proper_amount_note".Translate());
             listing_Standard.CheckboxLabeled("fun_police_label".Translate(), ref fun_police, "fun_police_note".Translate());
+            if (fun_police)
+            {
+                listing_Standard.Label("fun_police_threshold_label".Translate(Mathf.RoundToInt(fun_police_threshold * 100f)), -1f, "fun_police_threshold_note".Translate());
+                fun_police_threshold = Mathf.Round(listing_Standard.Slider(fun_police_threshold, 0.5f, 0.95f) * 20f) / 20f;
+            }
             listing_Standard.CheckboxLabeled("give_sick_joy_drugs_label".Translate(), ref give_sick_joy_drugs, "give_sick_joy_drugs_note".Translate());
             listing_Standard.CheckboxLabeled("social_relax_economy_label".Translate(), ref social_relax_economy, "social_relax_economy_note".Translate());
             listing_Standard.CheckboxLabeled("meditation_economy_label".Translate(), ref meditation_economy, "meditation_economy_note".Translate());
@@ -143,6 +149,7 @@ namespace CommonSense
             Scribe_Values.Look(ref put_back_to_inv, "put_back_to_inv", true, false);
             Scribe_Values.Look(ref pick_proper_amount, "pick_proper_amount", true, false);
             Scribe_Values.Look(ref fun_police, "fun_police", true, false);
+            Scribe_Values.Look(ref fun_police_threshold, "fun_police_threshold", 0.8f, false);
             Scribe_Values.Look(ref hauling_over_bills, "hauling_over_bills", true, false);
             Scribe_Values.Look(ref op_clean_num, "op_clean_num", 5, false);
             Scribe_Values.Look(ref adv_clean_num, "adv_clean_num", 5, false);
