@@ -1,3 +1,4 @@
 0Harmony.dll
-*.pdbSource/**/obj/
+*.pdb
+Source/**/obj/
 Source/**/bin/
